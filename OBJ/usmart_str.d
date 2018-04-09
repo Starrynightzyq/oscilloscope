@@ -2,7 +2,7 @@
 ..\obj\usmart_str.o: ..\SYSTEM\USMART\usmart_str.h
 ..\obj\usmart_str.o: ..\USER\stm32f10x.h
 ..\obj\usmart_str.o: ..\CORE\core_cm3.h
-..\obj\usmart_str.o: D:\mdk5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\usmart_str.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\usmart_str.o: ..\USER\system_stm32f10x.h
 ..\obj\usmart_str.o: ..\USER\stm32f10x_conf.h
 ..\obj\usmart_str.o: ..\STM32F10x_FWLib\inc\stm32f10x_gpio.h

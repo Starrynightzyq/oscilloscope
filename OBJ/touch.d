@@ -3,11 +3,7 @@
 ..\obj\touch.o: ..\SYSTEM\sys\sys.h
 ..\obj\touch.o: ..\USER\stm32f10x.h
 ..\obj\touch.o: ..\CORE\core_cm3.h
-<<<<<<< HEAD
 ..\obj\touch.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-=======
-..\obj\touch.o: D:\mdk5\ARM\ARMCC\Bin\..\include\stdint.h
->>>>>>> 5c51060da66938fbee9e9cd839f97b53f75527d1
 ..\obj\touch.o: ..\USER\system_stm32f10x.h
 ..\obj\touch.o: ..\USER\stm32f10x_conf.h
 ..\obj\touch.o: ..\STM32F10x_FWLib\inc\stm32f10x_gpio.h
@@ -19,14 +15,8 @@
 ..\obj\touch.o: ..\HARDWARE\TOUCH\gt9147.h
 ..\obj\touch.o: ..\HARDWARE\TOUCH\ft5206.h
 ..\obj\touch.o: ..\HARDWARE\LCD\lcd.h
-<<<<<<< HEAD
 ..\obj\touch.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 ..\obj\touch.o: ..\SYSTEM\delay\delay.h
 ..\obj\touch.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
-=======
-..\obj\touch.o: D:\mdk5\ARM\ARMCC\Bin\..\include\stdlib.h
-..\obj\touch.o: ..\SYSTEM\delay\delay.h
-..\obj\touch.o: D:\mdk5\ARM\ARMCC\Bin\..\include\math.h
->>>>>>> 5c51060da66938fbee9e9cd839f97b53f75527d1
 ..\obj\touch.o: ..\HARDWARE\24CXX\24cxx.h
 ..\obj\touch.o: ..\HARDWARE\IIC\myiic.h

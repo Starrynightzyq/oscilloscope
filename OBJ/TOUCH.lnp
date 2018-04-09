@@ -15,24 +15,17 @@
 "..\obj\delay.o"
 "..\obj\sys.o"
 "..\obj\usart.o"
-<<<<<<< HEAD
-=======
 "..\obj\gui.o"
 "..\obj\usmart.o"
 "..\obj\usmart_config.o"
 "..\obj\usmart_str.o"
 "..\obj\adc.o"
->>>>>>> 5c51060da66938fbee9e9cd839f97b53f75527d1
 "..\obj\core_cm3.o"
 "..\obj\startup_stm32f10x_hd.o"
 "..\obj\stm32f10x_gpio.o"
 "..\obj\stm32f10x_rcc.o"
 "..\obj\stm32f10x_usart.o"
 "..\obj\misc.o"
-<<<<<<< HEAD
---strict --scatter "..\OBJ\TOUCH.sct"
---summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
-=======
 "..\obj\stm32f10x_adc.o"
 "..\obj\stm32f10x_bkp.o"
 "..\obj\stm32f10x_can.o"
@@ -53,7 +46,6 @@
 "..\obj\stm32f10x_tim.o"
 "..\obj\stm32f10x_wwdg.o"
 --strict --scatter "..\OBJ\TOUCH.sct"
---summary_stderr --info summarysizes --map --xref --callgraph --symbols
->>>>>>> 5c51060da66938fbee9e9cd839f97b53f75527d1
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list ".\TOUCH.map" -o ..\OBJ\TOUCH.axf

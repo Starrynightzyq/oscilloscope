@@ -65,6 +65,9 @@ void GUI_draw(void)
 //	LCD_DrawLine(50,215,200,215);
 
 	LCD_Display_Dir(1);//横屏
+	
+	LCD_DrawRectangle(10,10,310,230);
+	
 	LCD_DrawLine(40,40,280,40);
 	LCD_DrawLine(40,120,280,120);
 	LCD_DrawLine(40,200,280,200);
@@ -79,13 +82,11 @@ void GUI_draw(void)
 	LCD_ShowString(110,85,55,75,16,"RIGHT");
 	LCD_ShowString(165,85,55,75,16,"UP");
 	LCD_ShowString(220,85,55,75,16,"DOWN");
-	LCD_ShowString(10,85,55,75,16,"Move");
 	
 	LCD_ShowString(55,140,55,75,16,"Sin");
 	LCD_ShowString(110,140,55,75,16,"Sawtooth");
 	LCD_ShowString(165,140,55,75,16,"Triangle");
 	LCD_ShowString(220,140,55,75,16,"Rectangular");
-	LCD_ShowString(280,145,55,75,16,"Wave");
 }
 
 void GUI_scan(void)
@@ -100,21 +101,15 @@ void GUI_scan(void)
 		}
 		if((tp_dev.x[0] > 40) && (tp_dev.x[0] < 120) && (tp_dev.y[0] > 160) && (tp_dev.y[0] < 220))	//(1,2)
 		{
-		
+			GUI_draw_right();
 		}
 		if((tp_dev.x[0] > 40) && (tp_dev.x[0] < 120) && (tp_dev.y[0] > 100) && (tp_dev.y[0] < 160))	//(1,3)
 		{
-		
+			GUI_draw_up();
 		}
 		if((tp_dev.x[0] > 40) && (tp_dev.x[0] < 120) && (tp_dev.y[0] > 40) && (tp_dev.y[0] < 100))	//(1,4)
 		{
-//			LCD_Fill(50,50,105,105,YELLOW);
-//			LCD_ShowString(55,85,55,75,16,"LEFT");
-//			LED0=(!LED0);
-//			delay_ms(500);
-//			LCD_Fill(50,50,105,105,WHITE);
-//			LED0=(!LED0);
-			GUI_draw_sin();
+			GUI_draw_down();
 		}
 		if((tp_dev.x[0] > 120) && (tp_dev.x[0] < 200) && (tp_dev.y[0] > 220) && (tp_dev.y[0] < 280))	//(2,1)
 		{
@@ -137,7 +132,9 @@ void GUI_scan(void)
 }
 
 u16 i = 0;
+u8 flag = 0;
 u8 LeftorRight_Val=0;
+int UporDown_Val = 0;
 u8 AnyWaveTab[256]={0};
 double DisplayCoefficient = 0.6;	//系数，最大 = 240/255
 u16 Displacement = 0;//位移
@@ -149,10 +146,11 @@ void GUI_draw_sin(void)
 	LCD_Display_Dir(1);//横屏
 	for( i=0;i<300;i++)
 	{
-		LCD_Fast_DrawPoint(i+10,(AnyWaveTab[(i+LeftorRight_Val)%256] * DisplayCoefficient + Displacement),WHITE);   //清除上次波形
+		LCD_Fast_DrawPoint(i+10,(AnyWaveTab[(i+LeftorRight_Val)%256] * DisplayCoefficient + Displacement + UporDown_Val),WHITE);   //清除上次波形
 		LCD_DrawPoint(i+10,(SineWaveTab[i%256] * DisplayCoefficient + Displacement));  //画正弦波，正弦波形数据最大0xff，最小0x00,中间值0x80，要求中间值在图形正中间位置即y坐标=570，所以128+442=570
 	}   
 	LeftorRight_Val=0;                       //非移位状态清0
+	UporDown_Val = 0;
 	for(i=0;i<256;i++)                       //存储当前波形数据到数组AnyWaveTab[]中
 	{
 		AnyWaveTab[i]=SineWaveTab[i];
@@ -167,13 +165,14 @@ void GUI_draw_triangle(void)
 	LCD_Display_Dir(1);//横屏
 	for( i=0;i<300;i++)
 	{
-		LCD_Fast_DrawPoint(i+10,(AnyWaveTab[(i+LeftorRight_Val)%256] * DisplayCoefficient + Displacement),WHITE);   //清除上次波形
+		LCD_Fast_DrawPoint(i+10,(AnyWaveTab[(i+LeftorRight_Val)%256] * DisplayCoefficient + Displacement + UporDown_Val),WHITE);   //清除上次波形
 		LCD_DrawPoint(i+10,(TriangleWaveTab[i%256] * DisplayCoefficient + Displacement));  //画正弦波，正弦波形数据最大0xff，最小0x00,中间值0x80，要求中间值在图形正中间位置即y坐标=570，所以128+442=570
 	}   
 	LeftorRight_Val=0;                       //非移位状态清0
+	UporDown_Val = 0;
 	for(i=0;i<256;i++)                       //存储当前波形数据到数组AnyWaveTab[]中
 	{
-		AnyWaveTab[i]=SineWaveTab[i];
+		AnyWaveTab[i]=TriangleWaveTab[i];
 	} 
 	LED0=(!LED0);
 }
@@ -185,13 +184,14 @@ void GUI_draw_sawtooth(void)
 	LCD_Display_Dir(1);//横屏
 	for( i=0;i<300;i++)
 	{
-		LCD_Fast_DrawPoint(i+10,(AnyWaveTab[(i+LeftorRight_Val)%256] * DisplayCoefficient + Displacement),WHITE);   //清除上次波形
+		LCD_Fast_DrawPoint(i+10,(AnyWaveTab[(i+LeftorRight_Val)%256] * DisplayCoefficient + Displacement + UporDown_Val),WHITE);   //清除上次波形
 		LCD_DrawPoint(i+10,(SawtoothWaveTab[i%256] * DisplayCoefficient + Displacement));  //画正弦波，正弦波形数据最大0xff，最小0x00,中间值0x80，要求中间值在图形正中间位置即y坐标=570，所以128+442=570
 	}   
 	LeftorRight_Val=0;                       //非移位状态清0
+	UporDown_Val = 0;
 	for(i=0;i<256;i++)                       //存储当前波形数据到数组AnyWaveTab[]中
 	{
-		AnyWaveTab[i]=SineWaveTab[i];
+		AnyWaveTab[i]=SawtoothWaveTab[i];
 	} 
 	LED0=(!LED0);
 }
@@ -203,13 +203,14 @@ void GUI_draw_square(void)
 	LCD_Display_Dir(1);//横屏
 	for( i=0;i<300;i++)
 	{
-		LCD_Fast_DrawPoint(i+10,(AnyWaveTab[(i+LeftorRight_Val)%256] * DisplayCoefficient + Displacement),WHITE);   //清除上次波形
+		LCD_Fast_DrawPoint(i+10,(AnyWaveTab[(i+LeftorRight_Val)%256] * DisplayCoefficient + Displacement + UporDown_Val),WHITE);   //清除上次波形
 		LCD_DrawPoint(i+10,(SquareWaveTab[i%256] * DisplayCoefficient + Displacement));  //画正弦波，正弦波形数据最大0xff，最小0x00,中间值0x80，要求中间值在图形正中间位置即y坐标=570，所以128+442=570
 	}   
 	LeftorRight_Val=0;                       //非移位状态清0
+	UporDown_Val = 0;
 	for(i=0;i<256;i++)                       //存储当前波形数据到数组AnyWaveTab[]中
 	{
-		AnyWaveTab[i]=SineWaveTab[i];
+		AnyWaveTab[i]=SquareWaveTab[i];
 	} 
 	LED0=(!LED0);
 }
@@ -221,13 +222,73 @@ void GUI_draw_left(void)
 	LCD_Display_Dir(1);//横屏
 	for( i=0;i<300;i++)
 	{
-		LCD_Fast_DrawPoint(i+10,(AnyWaveTab[(i+LeftorRight_Val)%256] * DisplayCoefficient + Displacement),WHITE);   //清除上次波形
-		LCD_DrawPoint(i+10,(AnyWaveTab[(i+LeftorRight_Val+LeftorRight_Num)%256] * DisplayCoefficient + Displacement));  //画正弦波，正弦波形数据最大0xff，最小0x00,中间值0x80，要求中间值在图形正中间位置即y坐标=570，所以128+442=570
-	}   
-	LeftorRight_Val=0;                       //非移位状态清0
-	for(i=0;i<256;i++)                       //存储当前波形数据到数组AnyWaveTab[]中
+		LCD_Fast_DrawPoint(i+10,(AnyWaveTab[(i+LeftorRight_Val)%256] * DisplayCoefficient + Displacement + UporDown_Val),WHITE);   //清除上次波形
+		if(((AnyWaveTab[(i+LeftorRight_Val + LeftorRight_Num)%256] * DisplayCoefficient + Displacement + UporDown_Val) > 10) && ((AnyWaveTab[(i+LeftorRight_Val + LeftorRight_Num)%256] * DisplayCoefficient + Displacement + UporDown_Val) < 230))
+		{
+			LCD_DrawPoint(i+10,(AnyWaveTab[(i+LeftorRight_Val + LeftorRight_Num)%256] * DisplayCoefficient + Displacement + UporDown_Val));  //画正弦波，正弦波形数据最大0xff，最小0x00,中间值0x80，要求中间值在图形正中间位置即y坐标=570，所以128+442=570
+		}
+	}
+	LeftorRight_Val=LeftorRight_Val+LeftorRight_Num;
+	LED0=(!LED0);
+}
+
+//右移
+void GUI_draw_right(void)
+{
+	Displacement = 120 - 128 * DisplayCoefficient;
+	LCD_Display_Dir(1);//横屏
+	for( i=0;i<300;i++)
 	{
-		AnyWaveTab[i]=SineWaveTab[i];
-	} 
+		LCD_Fast_DrawPoint(i+10,(AnyWaveTab[(i+LeftorRight_Val)%256] * DisplayCoefficient + Displacement + UporDown_Val),WHITE);   //清除上次波形
+		if(((AnyWaveTab[(i+LeftorRight_Val - LeftorRight_Num)%256] * DisplayCoefficient + Displacement + UporDown_Val) > 10) && ((AnyWaveTab[(i+LeftorRight_Val - LeftorRight_Num)%256] * DisplayCoefficient + Displacement + UporDown_Val) < 230))
+		{
+			LCD_DrawPoint(i+10,(AnyWaveTab[(i+LeftorRight_Val - LeftorRight_Num)%256] * DisplayCoefficient + Displacement + UporDown_Val));  //画正弦波，正弦波形数据最大0xff，最小0x00,中间值0x80，要求中间值在图形正中间位置即y坐标=570，所以128+442=570
+		}
+	}		
+	LeftorRight_Val = LeftorRight_Val - LeftorRight_Num;
+	LED0=(!LED0);
+}
+
+//上移
+void GUI_draw_up(void)
+{
+	Displacement = 120 - 128 * DisplayCoefficient;
+	LCD_Display_Dir(1);//横屏
+	for( i=0;i<300;i++)
+	{
+		LCD_Fast_DrawPoint(i+10,(AnyWaveTab[(i+LeftorRight_Val)%256] * DisplayCoefficient + Displacement + UporDown_Val),WHITE);   //清除上次波形
+		if(((AnyWaveTab[(i + LeftorRight_Val)%256] * DisplayCoefficient + Displacement + UporDown_Val - UporDown_Num) > 10) && ((AnyWaveTab[(i + LeftorRight_Val)%256] * DisplayCoefficient + Displacement + UporDown_Val - UporDown_Num) < 230))
+		{
+			LCD_DrawPoint(i+10,(AnyWaveTab[(i + LeftorRight_Val)%256] * DisplayCoefficient + Displacement + UporDown_Val - UporDown_Num));  //画正弦波，正弦波形数据最大0xff，最小0x00,中间值0x80，要求中间值在图形正中间位置即y坐标=570，所以128+442=570
+			flag = 1;
+		}
+	}  	
+	if(flag)
+	{
+		UporDown_Val = UporDown_Val - UporDown_Num;
+		flag = 0;
+	}
+	LED0=(!LED0);
+}
+
+//下移
+void GUI_draw_down(void)
+{
+	Displacement = 120 - 128 * DisplayCoefficient;
+	LCD_Display_Dir(1);//横屏
+	for( i=0;i<300;i++)
+	{
+		LCD_Fast_DrawPoint(i+10,(AnyWaveTab[(i+LeftorRight_Val)%256] * DisplayCoefficient + Displacement + UporDown_Val),WHITE);   //清除上次波形
+		if(((AnyWaveTab[(i + LeftorRight_Val)%256] * DisplayCoefficient + Displacement + UporDown_Val + UporDown_Num) > 10) && ((AnyWaveTab[(i + LeftorRight_Val)%256] * DisplayCoefficient + Displacement + UporDown_Val + UporDown_Num) < 230))
+		{
+			LCD_DrawPoint(i+10,(AnyWaveTab[(i + LeftorRight_Val)%256] * DisplayCoefficient + Displacement + UporDown_Val + UporDown_Num));  //画正弦波，正弦波形数据最大0xff，最小0x00,中间值0x80，要求中间值在图形正中间位置即y坐标=570，所以128+442=570
+			flag = 1;
+		}
+	}
+	if(flag)
+	{
+		UporDown_Val = UporDown_Val + UporDown_Num;
+		flag = 0;
+	}
 	LED0=(!LED0);
 }

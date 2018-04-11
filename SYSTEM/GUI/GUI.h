@@ -9,6 +9,7 @@
 
 
 #define   LeftorRight_Num  10     //左移或右移一次为10个点
+#define   UporDown_Num	10
 
 
 void GUI_draw(void);
@@ -19,5 +20,8 @@ void GUI_draw_triangle(void);
 void GUI_draw_square(void);
 
 void GUI_draw_left(void);
+void GUI_draw_right(void);
+void GUI_draw_up(void);
+void GUI_draw_down(void);
 
 #endif

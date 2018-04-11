@@ -23,7 +23,7 @@ I (..\HARDWARE\TOUCH\touch.h)(0x5AC9C202)
 I (..\HARDWARE\TOUCH\ott2001a.h)(0x5AC9C202)
 I (..\HARDWARE\TOUCH\gt9147.h)(0x5AC9C202)
 I (..\HARDWARE\TOUCH\ft5206.h)(0x5AC9C202)
-I (..\SYSTEM\GUI\GUI.h)(0x5ACB7239)
+I (..\SYSTEM\GUI\GUI.h)(0x5ACDAE78)
 I (..\SYSTEM\ADC\adc.h)(0x5AC9CEFD)
 I (..\STM32F10x_FWLib\inc\stm32f10x_dma.h)(0x5AC9C202)
 F (.\stm32f10x_it.c)(0x5AC9C202)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\HARDWARE\LCD -I ..\HARDWARE\KEY -I ..\HARDWARE\IIC -I ..\HARDWARE\24CXX -I ..\HARDWARE\TOUCH -I ..\SYSTEM\GUI -I ..\SYSTEM\USMART -I ..\SYSTEM\ADC-I.\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\stm32f10x_it.o --omf_browse ..\obj\stm32f10x_it.crf --depend ..\obj\stm32f10x_it.d)
@@ -247,8 +247,8 @@ I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x5AC9C202)
 I (..\STM32F10x_FWLib\inc\misc.h)(0x5AC9C202)
 I (..\SYSTEM\usart\usart.h)(0x5AC9C202)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x588B8344)
-F (..\SYSTEM\GUI\GUI.c)(0x5ACB723D)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\HARDWARE\LCD -I ..\HARDWARE\KEY -I ..\HARDWARE\IIC -I ..\HARDWARE\24CXX -I ..\HARDWARE\TOUCH -I ..\SYSTEM\GUI -I ..\SYSTEM\USMART -I ..\SYSTEM\ADC-I.\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\gui.o --omf_browse ..\obj\gui.crf --depend ..\obj\gui.d)
-I (..\SYSTEM\GUI\GUI.h)(0x5ACB7239)
+F (..\SYSTEM\GUI\GUI.c)(0x5ACDB376)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\HARDWARE\LCD -I ..\HARDWARE\KEY -I ..\HARDWARE\IIC -I ..\HARDWARE\24CXX -I ..\HARDWARE\TOUCH -I ..\SYSTEM\GUI -I ..\SYSTEM\USMART -I ..\SYSTEM\ADC-I.\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\gui.o --omf_browse ..\obj\gui.crf --depend ..\obj\gui.d)
+I (..\SYSTEM\GUI\GUI.h)(0x5ACDAE78)
 I (..\HARDWARE\LCD\lcd.h)(0x5AC9C202)
 I (..\SYSTEM\sys\sys.h)(0x5AC9C202)
 I (..\USER\stm32f10x.h)(0x5AC9C202)
